@@ -167,21 +167,23 @@ class MaintainnBrokenSiteChecker {
 	 */
 	protected function check_site( $site_id = 0 ) {
 
+		// Exit if we don't have a $site_id
 		if ( 0 === $site_id )
 			return;
 
+		// Switch to this blog so we can get the url
 		switch_to_blog( $site_id );
-
 		$siteurl = site_url();
-
 		restore_current_blog();
 
 		echo '<li>Site ID ' . $site_id . ': ' . $siteurl . '</li>';
 
+		// Attempt to get a response from the URL
 		$response = wp_remote_get( $siteurl, array( 'timeout' => 120, 'httpversion' => '1.1' ) );
 
+		// If we get an error, the site is unavailable. Lets archive it.
 		if ( is_wp_error( $response ) )
-			update_archived( $site_id, 1 );	
+			update_archived( $site_id, 1 );
 
 		return;
 
