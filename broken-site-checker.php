@@ -8,7 +8,7 @@ Version: 1.0
 Author URI: http://maintainn.com
 Text Domain: maintainn-broken-site-checker
 Domain Path: /lang
- */
+*/
 
 add_action( 'plugins_loaded', array ( MaintainnBrokenSiteChecker::get_instance(), 'plugin_setup' ) );
 
