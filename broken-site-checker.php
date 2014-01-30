@@ -184,16 +184,24 @@ class MaintainnBrokenSiteChecker {
 		$siteurl = site_url();
 		restore_current_blog();
 
-		echo '<li>Site ID ' . $site_id . ': ' . $siteurl . '</li>';
-
 		// Attempt to get a response from the URL
 		$response = wp_remote_get( $siteurl, array( 'timeout' => 120, 'httpversion' => '1.1' ) );
 
+		// Set our retult message to return
+		$result = '<li>Site ID ' . $site_id . ': ' . $siteurl . ' - <span style="color:green;">Good</span></li>';
+
 		// If we get an error, the site is unavailable. Lets archive it.
-		if ( is_wp_error( $response ) )
+		if ( is_wp_error( $response ) ) {
+
+			// Change the archive status
 			update_archived( $site_id, 1 );
 
-		return;
+			// Update result message to indicate failure
+			$result = '<li>Site ID ' . $site_id . ': ' . $siteurl . ' - <span style="color:red;">Could not reach site. Site archived.</span></li>';
+
+		}
+
+		echo $result;
 
 	}
 
