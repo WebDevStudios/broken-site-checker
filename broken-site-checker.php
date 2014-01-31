@@ -68,6 +68,7 @@ class MaintainnBrokenSiteChecker {
 
 		add_action( 'network_admin_menu', array( $this, 'broken_site_checker_menu' ) );
 		add_action( 'wp_ajax_maintainn_get_blog_ids', array( $this, 'get_blog_ids' ) );
+		add_action( 'wp_ajax_maintainn_check_broken_site', array( $this, 'check_site' ) );
 
 	}
 
@@ -171,12 +172,11 @@ class MaintainnBrokenSiteChecker {
 	 * Pings a URL to see if a site is alive and archives it if not
 	 *
 	 * @since  1.0
-	 *
-	 * @param  integer $site_id ID of the site we're checking
-	 *
 	 * @return void
 	 */
-	protected function check_site( $site_id = 0 ) {
+	public function check_site() {
+
+		$site_id = absint( $_REQUEST['site_id'] );
 
 		// Exit if we don't have a $site_id
 		if ( 0 === $site_id )
@@ -204,7 +204,11 @@ class MaintainnBrokenSiteChecker {
 
 		}
 
-		echo $result;
+		// Send back json response
+		echo json_encode( $result );
+
+		// End here
+		die();
 
 	}
 
