@@ -154,7 +154,7 @@ class MaintainnBrokenSiteChecker {
 	 *
 	 * @return array  Returns an array of blog IDs or empty array if this isn't multisite
 	 */
-	protected function get_blog_ids() {
+	public function get_blog_ids() {
 
 		global $wpdb;
 
