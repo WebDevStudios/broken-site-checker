@@ -120,7 +120,7 @@ class MaintainnBrokenSiteChecker {
 	 */
 	public function broken_site_checker_menu() {
 
-		$this->admin_screen_hook = add_submenu_page( 'sites.php', 'Broken Site Checker', 'Broken Site Checker', 'manage-sites', 'broken-site-checker', array( $this, 'broken_site_checker_page' ) );
+		$this->admin_screen_hook = add_submenu_page( 'sites.php', __( 'Broken Site Checker', 'maintainn-broken-site-checker' ), __( 'Broken Site Checker', 'maintainn-broken-site-checker' ), 'manage-sites', 'broken-site-checker', array( $this, 'broken_site_checker_page' ) );
 
 	}
 
@@ -134,20 +134,20 @@ class MaintainnBrokenSiteChecker {
 	public function broken_site_checker_page() {
 
 		echo '<div class="wrap">';
-			echo '<h2>Broken Site Checker</h2>';
-			echo '<div>This process will check your multisite install for sites that are no longer accessible. If a site is found to be inaccessible it will be marked as archived.</div>';
-			echo '<a id="broken_site_checker_submit" class="button" style="margin:20px auto;" />Check for Broken Sites!</a>';
+			echo '<h2>' . __( 'Broken Site Checker', 'maintainn-broken-site-checker' ) . '</h2>';
+			echo '<div>' . __( 'This process will check your multisite install for sites that are no longer accessible. If a site is found to be inaccessible it will be marked as archived.', 'maintainn-broken-site-checker' ) . '</div>';
+			echo '<a id="broken_site_checker_submit" class="button" style="margin:20px auto;" />' . __( 'Check for Broken Sites!', 'maintainn-broken-site-checker' ) . '</a>';
 
 			echo '<div class="sites-checked-header" style="display:none;">';
-				echo '<h3>Sites Checked:</h3>';
-				echo '<p>Please be patient, this may take a while depending on how many sites are in your multisite network.</p>';
+				echo '<h3>' . __( 'Sites Checked:', 'maintainn-broken-site-checker' ) . '</h3>';
+				echo '<p>' . __( 'Please be patient, this may take a while depending on how many sites are in your multisite network.', 'maintainn-broken-site-checker' ) . '</p>';
 				echo '<hr />';
 			echo '</div><!-- /.sites-checked-header -->';
 
 			echo '<div id="sites-checked">';
 			echo '</div><!-- /#sites-checked -->';
 
-			echo '<h3 id="sites-checked-finished" style="display:none;">Finished Checking Sites!</h3>';
+			echo '<h3 id="sites-checked-finished" style="display:none;">' . __( 'Finished Checking Sites!', 'maintainn-broken-site-checker' ) . '</h3>';
 
 		echo '</div><!-- /.wrap -->';
 
@@ -216,7 +216,7 @@ class MaintainnBrokenSiteChecker {
 		$response = wp_remote_get( $siteurl, array( 'timeout' => 120, 'httpversion' => '1.1' ) );
 
 		// Set our retult message to return
-		$result = '<li>Site ID ' . $site_id . ': ' . $siteurl . ' - <span style="color:green;">Good</span></li>';
+		$result = '<li>' . __( 'Site ID', 'maintainn-broken-site-checker' ) . ' ' . $site_id . ': ' . $siteurl . ' - <span style="color:green;">' . __( 'Good', 'maintainn-broken-site-checker' ) . '</span></li>';
 
 		// If we get an error, the site is unavailable. Lets archive it.
 		if ( is_wp_error( $response ) ) {
@@ -230,7 +230,7 @@ class MaintainnBrokenSiteChecker {
 			restore_current_blog();
 
 			// Update result message to indicate failure
-			$result = '<li>Site ID ' . $site_id . ': ' . $siteurl . ' - <span style="color:red;">Could not reach site. Site archived.</span></li>';
+			$result = '<li>Site ID ' . $site_id . ': ' . $siteurl . ' - <span style="color:red;">' . __( 'Could not reach site. Site archived.', 'maintainn-broken-site-checker' ) . '</span></li>';
 
 		}
 
