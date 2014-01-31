@@ -127,7 +127,7 @@ class MaintainnBrokenSiteChecker {
 			echo '<div>This process will check your multisite install for sites that are no longer accessible. If a site is found to be inaccessible it will be marked as archived.</div>';
 			echo '<a id="broken_site_checker_submit" class="button" style="margin:20px auto;" />Check for Broken Sites!</a>';
 
-			echo '<div class="sites-checked-header">';
+			echo '<div class="sites-checked-header" style="display:none;">';
 				echo '<h3>Sites Checked:</h3>';
 				echo '<p>Please be patient, this may take a while depending on how many sites are in your multisite network.</p>';
 				echo '<hr />';
