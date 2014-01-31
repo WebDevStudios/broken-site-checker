@@ -115,7 +115,6 @@ class MaintainnBrokenSiteChecker {
 	 * Add 'Broken Site Checker' menu page under Settings menu
 	 *
 	 * @since  1.0
-	 *
 	 * @return void
 	 */
 	public function broken_site_checker_menu() {
@@ -129,7 +128,6 @@ class MaintainnBrokenSiteChecker {
 	 * Display Broken Site Checker admin page
 	 *
 	 * @since  1.0
-	 *
 	 * @return void
 	 */
 	public function broken_site_checker_page() {
@@ -153,8 +151,16 @@ class MaintainnBrokenSiteChecker {
 	}
 
 
+	/**
+	 * Registers admin scripts
+	 *
+	 * @since  1.0
+	 * @param  string  $hook The page hook string we're loading
+	 * @return void
+	 */
 	public function admin_scripts( $hook ) {
 
+		// If we're not on our admin screen, don't load js
 		if( $hook != $this->admin_screen_hook )
 			return;
 
@@ -171,7 +177,6 @@ class MaintainnBrokenSiteChecker {
 	 * Gets all active blog ids from multisite
 	 *
 	 * @since  1.0
-	 *
 	 * @return array  Returns an array of blog IDs or empty array if this isn't multisite
 	 */
 	public function get_blog_ids() {
