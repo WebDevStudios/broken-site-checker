@@ -1,10 +1,11 @@
 # Broken Site Checker #
-Contributors: ryanduff
-Tags: multisite, admin, upgrade, management, network
-Requires at least: 3.8
-Tested up to: 3.8.1
-Stable tag: 1.0.0
-License: GPLv2 or later
+
+Contributors: ryanduff  
+Tags: multisite, admin, upgrade, management, network  
+Requires at least: 3.8  
+Tested up to: 3.8.1  
+Stable tag: 1.0.0  
+License: GPLv2 or later  
 
 Checks all sites on a multisite and archives any that are inaccessable.
 
