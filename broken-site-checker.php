@@ -67,6 +67,7 @@ class MaintainnBrokenSiteChecker {
 		$this->load_language( 'maintainn-broken-site-checker' );
 
 		add_action( 'network_admin_menu', array( $this, 'broken_site_checker_menu' ) );
+		add_action( 'wp_ajax_maintainn_get_blog_ids', array( $this, 'get_blog_ids' ) );
 
 	}
 
@@ -159,7 +160,9 @@ class MaintainnBrokenSiteChecker {
 
 		$blogs = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs} WHERE site_id = '{$wpdb->siteid}' AND spam = '0' AND deleted = '0' AND archived = '0' ORDER BY registered ASC" );
 
-		return $blogs;
+		echo json_encode( $blogs );
+
+		die();
 
 	}
 
