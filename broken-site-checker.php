@@ -4,7 +4,7 @@ Plugin Name: Broken Site Checker
 Plugin URI: http://maintainn.com
 Description: Checks for and disables inaccessible sites in a multisite install
 Author: Ryan Duff
-Version: 1.0
+Version: 1.0.0
 Author URI: http://maintainn.com
 Text Domain: maintainn-broken-site-checker
 Domain Path: /lang
@@ -50,7 +50,7 @@ class MaintainnBrokenSiteChecker {
 	/**
 	 * Access this plugin’s working instance
 	 *
-	 * @since   1.0
+	 * @since   1.0.0
 	 * @return  object of this class
 	 */
 	public static function get_instance() {
@@ -65,7 +65,7 @@ class MaintainnBrokenSiteChecker {
 	/**
 	 * Used for plugin setup and hooks
 	 *
-	 * @since   1.0
+	 * @since   1.0.0
 	 * @return  void
 	 */
 	public function plugin_setup() {
@@ -88,7 +88,7 @@ class MaintainnBrokenSiteChecker {
 	 * Constructor. Intentionally left empty and public.
 	 *
 	 * @see plugin_setup()
-	 * @since 1.0
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 	}
@@ -101,7 +101,7 @@ class MaintainnBrokenSiteChecker {
 	 * front-end for example).
 	 *
 	 * @param   string $domain
-	 * @since   1.0
+	 * @since   1.0.0
 	 * @return  void
 	 */
 	public function load_language( $domain ) {
@@ -114,7 +114,7 @@ class MaintainnBrokenSiteChecker {
 	/**
 	 * Add 'Broken Site Checker' menu page under Settings menu
 	 *
-	 * @since  1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function broken_site_checker_menu() {
@@ -127,7 +127,7 @@ class MaintainnBrokenSiteChecker {
 	/**
 	 * Display Broken Site Checker admin page
 	 *
-	 * @since  1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function broken_site_checker_page() {
@@ -156,7 +156,7 @@ class MaintainnBrokenSiteChecker {
 	/**
 	 * Registers admin scripts
 	 *
-	 * @since  1.0
+	 * @since  1.0.0
 	 * @param  string  $hook The page hook string we're loading
 	 * @return void
 	 */
@@ -166,7 +166,7 @@ class MaintainnBrokenSiteChecker {
 		if( $hook != $this->admin_screen_hook )
 			return;
 
-		wp_enqueue_script( 'maintainn-broken-site-checker', $this->plugin_url . 'js/broken-site-checker.js', array( 'jquery' ), '1.0', true );
+		wp_enqueue_script( 'maintainn-broken-site-checker', $this->plugin_url . 'js/broken-site-checker.js', array( 'jquery' ), '1.0.0', true );
 
 		// Pass blog ids along
 		$blogs = $this->get_blog_ids();
@@ -178,7 +178,7 @@ class MaintainnBrokenSiteChecker {
 	/**
 	 * Gets all active blog ids from multisite
 	 *
-	 * @since  1.0
+	 * @since  1.0.0
 	 * @return array  Returns an array of blog IDs or empty array if this isn't multisite
 	 */
 	public function get_blog_ids() {
@@ -195,7 +195,7 @@ class MaintainnBrokenSiteChecker {
 	/**
 	 * Pings a URL to see if a site is alive and archives it if not
 	 *
-	 * @since  1.0
+	 * @since  1.0.0
 	 * @return void
 	 */
 	public function check_site() {
