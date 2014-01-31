@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-        // Retrieve credly category results via AJAX
+        // Retrieve site ids via AJAX
         $('#broken_site_checker_submit').click( function( event ) {
 
             // Stop the default submission from happening
