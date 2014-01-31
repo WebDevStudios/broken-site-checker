@@ -21,6 +21,10 @@ Large networks can get a bit unweidly. On occasion there are mapped domains that
 
 None at this time
 
+## Screenshots ##
+
+1. Checking a multisite network for broken sites
+
 ## Changelog ##
 
 ### 1.0.0 ###
