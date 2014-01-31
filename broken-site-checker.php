@@ -40,6 +40,14 @@ class MaintainnBrokenSiteChecker {
 
 
 	/**
+	 * Holds admin screen hook.
+	 *
+	 * @type string
+	 */
+	public $admin_screen_hook = '';
+
+
+	/**
 	 * Access this plugin’s working instance
 	 *
 	 * @since   1.0
@@ -112,7 +120,7 @@ class MaintainnBrokenSiteChecker {
 	 */
 	public function broken_site_checker_menu() {
 
-		add_submenu_page( 'sites.php', 'Broken Site Checker', 'Broken Site Checker', 'manage-sites', 'broken-site-checker', array( $this, 'broken_site_checker_page' ) );
+		$this->admin_screen_hook = add_submenu_page( 'sites.php', 'Broken Site Checker', 'Broken Site Checker', 'manage-sites', 'broken-site-checker', array( $this, 'broken_site_checker_page' ) );
 
 	}
 
@@ -146,6 +154,9 @@ class MaintainnBrokenSiteChecker {
 
 
 	public function admin_scripts( $hook ) {
+
+		if( $hook != $this->admin_screen_hook )
+			return;
 
 		wp_enqueue_script( 'maintainn-broken-site-checker', $this->plugin_url . 'js/broken-site-checker.js', array( 'jquery' ), '1.0', true );
 
