@@ -67,6 +67,9 @@ class MaintainnBrokenSiteChecker {
 		$this->load_language( 'maintainn-broken-site-checker' );
 
 		add_action( 'network_admin_menu', array( $this, 'broken_site_checker_menu' ) );
+
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+
 		add_action( 'wp_ajax_maintainn_get_blog_ids', array( $this, 'get_blog_ids' ) );
 		add_action( 'wp_ajax_maintainn_check_broken_site', array( $this, 'check_site' ) );
 
@@ -138,6 +141,13 @@ class MaintainnBrokenSiteChecker {
 			echo '</div><!-- /#sites-checked -->';
 
 		echo '</div><!-- /.wrap -->';
+
+	}
+
+
+	public function admin_scripts( $hook ) {
+
+		wp_enqueue_script( 'maintainn-broken-site-checker', $this->plugin_url . 'js/broken-site-checker.js', array( 'jquery' ), '1.0', true );
 
 	}
 
