@@ -146,6 +146,8 @@ class MaintainnBrokenSiteChecker {
 			echo '<div id="sites-checked">';
 			echo '</div><!-- /#sites-checked -->';
 
+			echo '<h3 id="sites-checked-finished" style="display:none;">Finished Checking Sites!</h3>';
+
 		echo '</div><!-- /.wrap -->';
 
 	}

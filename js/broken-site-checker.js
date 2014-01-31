@@ -29,9 +29,16 @@ jQuery(document).ready(function($) {
                     // Increase the index
                     ++index;
 
-                    // If we haven't iterated through all, keep going
                     if (index < site_ids.length)
+                    {
+                        // If we haven't iterated through all, keep going
                         check_site( site_ids, index );
+                    }
+                    else
+                    {
+                        // Otherwise show finished message
+                        $('#sites-checked-finished').show();
+                    }
 
                 }
 
