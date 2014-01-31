@@ -137,13 +137,6 @@ class MaintainnBrokenSiteChecker {
 			echo '<div id="sites-checked">';
 			echo '</div><!-- /#sites-checked -->';
 
-			$site_ids = $this->get_blog_ids();
-			foreach ( $site_ids as $site_id ) {
-				$this->check_site( $site_id );
-			}
-
-			echo '</div><!-- /.sites-checked -->';
-
 		echo '</div><!-- /.wrap -->';
 
 	}
