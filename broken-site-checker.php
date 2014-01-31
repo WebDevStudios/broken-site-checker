@@ -221,6 +221,11 @@ class MaintainnBrokenSiteChecker {
 			// Change the archive status
 			update_archived( $site_id, 1 );
 
+			// Add site option so know it was archived automatically
+			switch_to_blog( $site_id );
+			update_option( 'broken_site_checker_auto_archived', 1 );
+			restore_current_blog();
+
 			// Update result message to indicate failure
 			$result = '<li>Site ID ' . $site_id . ': ' . $siteurl . ' - <span style="color:red;">Could not reach site. Site archived.</span></li>';
 
