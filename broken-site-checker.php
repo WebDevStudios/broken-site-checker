@@ -160,6 +160,10 @@ class MaintainnBrokenSiteChecker {
 
 		wp_enqueue_script( 'maintainn-broken-site-checker', $this->plugin_url . 'js/broken-site-checker.js', array( 'jquery' ), '1.0', true );
 
+		// Pass blog ids along
+		$blogs = $this->get_blog_ids();
+		wp_localize_script( 'maintainn-broken-site-checker', 'site_ids', $blogs );
+
 	}
 
 
@@ -176,9 +180,7 @@ class MaintainnBrokenSiteChecker {
 
 		$blogs = $wpdb->get_col( "SELECT blog_id FROM {$wpdb->blogs} WHERE site_id = '{$wpdb->siteid}' AND spam = '0' AND deleted = '0' AND archived = '0' ORDER BY registered ASC" );
 
-		echo json_encode( $blogs );
-
-		die();
+		return $blogs;
 
 	}
 

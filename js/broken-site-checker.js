@@ -6,28 +6,13 @@ jQuery(document).ready(function($) {
             // Stop the default submission from happening
             event.preventDefault();
 
-            // Get sites
-            $.ajax({
-                type : "post",
-                dataType : "json",
-                url : ajaxurl,
-                data : { "action": "maintainn_get_blog_ids" },
-                success : function(response) {
-                    check_sites( response );
-                }
-            });
-
-        });
-
-        function check_sites( site_ids ){
-
             // Show status div
             $('.sites-checked-header').show('slow');
 
             // Loop through and check each site
             check_site( site_ids, 0 );
 
-        }
+        });
 
         function check_site( site_ids, index ){
 
