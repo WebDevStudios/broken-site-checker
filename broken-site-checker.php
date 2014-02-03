@@ -4,7 +4,7 @@ Plugin Name: Broken Site Checker
 Plugin URI: http://maintainn.com
 Description: Checks for and disables inaccessible sites in a multisite install
 Author: Ryan Duff
-Version: 1.0.0
+Version: 1.0.1
 License: GPL version 2 or any later version
 Author URI: http://maintainn.com
 Text Domain: maintainn-broken-site-checker

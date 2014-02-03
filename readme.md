@@ -4,7 +4,7 @@ Contributors: ryanduff
 Tags: multisite, admin, upgrade, management, network  
 Requires at least: 3.8  
 Tested up to: 3.8.1  
-Stable tag: 1.0.0  
+Stable tag: 1.0.1  
 License: GPLv2 or later  
 
 Checks all sites on a multisite and archives any that are inaccessable.
@@ -26,6 +26,12 @@ None at this time
 1. Checking a multisite network for broken sites
 
 ## Changelog ##
+
+### 1.0.1 ###
+* Better validation of Site IDs before archiving
+* Added wp_error response to archived site message
+* Fixed missing string translation
+
 
 ### 1.0.0 ###
 * Initial Release
