@@ -203,9 +203,7 @@ class MaintainnBrokenSiteChecker {
 
 		$site_id = absint( $_REQUEST['site_id'] );
 
-		// Exit if we don't have a $site_id
-		if ( 0 === $site_id )
-			return;
+		$site_id = $this->validate_site_id( $site_id );
 
 		// Switch to this blog so we can get the url
 		switch_to_blog( $site_id );
@@ -239,6 +237,42 @@ class MaintainnBrokenSiteChecker {
 
 		// End here
 		die();
+
+	}
+
+
+	/**
+	 * Validates our site id to make sure it's safe to test and/or archive
+	 *
+	 * @since  1.0.1
+	 *
+	 * @param  integer $site_id The id of the site we're validating
+	 *
+	 * @return mixed           Returns site id if it's valid, otherwise sends back json response for ajax request
+	 */
+	protected function validate_site_id( $site_id = 0 ) {
+
+		// If not a valid ID
+		if ( 0 === $site_id  ) {
+
+			$result = '<li><span style="color:red;">' . __( 'Invalid Site ID Passed', 'maintainn-broken-site-checker' ) . ': ' . $site_id . '</span></li>';
+
+		// If main site
+		} elseif( 1 === $site_id ) {
+
+			$result = '<li>' . __( 'Site ID', 'maintainn-broken-site-checker' ) . ' ' . $site_id . ': ' . $siteurl . ' - <span style="color:red;">' . __( 'Skipped. You can\'t archive the main site.', 'maintainn-broken-site-checker' ) . '</span></li>';
+
+		}
+
+		// If either cases matched, return a json response
+		if ( $result ) {
+
+			echo json_encode( $result );
+			die();
+
+		}
+
+		return $site_id;
 
 	}
 
