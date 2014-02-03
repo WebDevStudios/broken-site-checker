@@ -228,7 +228,7 @@ class MaintainnBrokenSiteChecker {
 			restore_current_blog();
 
 			// Update result message to indicate failure
-			$result = '<li>' . __( 'Site ID', 'maintainn-broken-site-checker' ) . ' ' . $site_id . ': ' . $siteurl . ' - <span style="color:red;">' . __( 'Could not reach site. Site archived.', 'maintainn-broken-site-checker' ) . '</span></li>';
+			$result = '<li>' . __( 'Site ID', 'maintainn-broken-site-checker' ) . ' ' . $site_id . ': ' . $siteurl . ' - <span style="color:red;">' . __( 'Could not reach site. Site archived.', 'maintainn-broken-site-checker' ) . ' (' . $response->get_error_message() . ')</span></li>';
 
 		}
 
